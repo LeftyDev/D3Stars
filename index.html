@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="src/css/visuals.css" rel="stylesheet" type="text/css">
+    <link href="src/css/paralax.css" rel="stylesheet" type="text/css">
+    <!-- <script data-main="scripts/main" src="src/js/require.js"></script> -->
+    <title>StarChain - Capstone 2018</title>
+
+</head>
+<body>
+        <script type="text/javascript" src="../../dist/vis.js"></script>
+
+  <script type="text/javascript">
+    var data = null;
+    var graph = null;
+
+    function onclick(point) {
+      console.log(point);
+    }
+
+    // Called when the Visualization API is loaded.
+    function drawVisualization() {
+      // create the data table.
+      data = new vis.DataSet();
+
+      // create some shortcuts to math functions
+      var sqrt = Math.sqrt;
+      var pow = Math.pow;
+      var random = Math.random;
+
+      // create the animation data
+      var imax = 100;
+      for (var i = 0; i < imax; i++) {
+        var x = pow(random(), 2);
+        var y = pow(random(), 2);
+        var z = pow(random(), 2);
+        var style = (i%2==0) ? sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2)) : "#00ffff";
+
+        data.add({x:x,y:y,z:z,style:style});
+      }
+
+      // specify options
+      var options = {
+        width:  '600px',
+        height: '600px',
+        style: 'dot-color',
+        showPerspective: true,
+        showGrid: true,
+        keepAspectRatio: true,
+        verticalRatio: 1.0,
+        legendLabel: 'distance',
+        onclick: onclick,
+        cameraPosition: {
+          horizontal: -0.35,
+          vertical: 0.22,
+          distance: 1.8
+        }
+      };
+
+      // create our graph
+      var container = document.getElementById('mygraph');
+      graph = new vis.Graph3d(container, data, options);
+    }
+  </script>
+<!--  stars, stars2, and stars3 for scrolling background. content begins at wrapper -->
+<div id="stars"></div>
+<div id="stars2"></div>
+<div id="stars3"></div>
+<div class="wrapper">
+    <!-- sidebar contains nav and photo at left side of page -->
+    <section class="sidebar">
+        <img id="profile" alt="Profile photo" src="src/img/sun.png">
+        <h2>StellarChain</h2>
+        
+        <p>A look at our closest neighbors</p>
+        <p>via blockchain-fed visualizations.</p>
+        <p><a href="https://iupui.edu/" target="_blank">Indiana University-Purdue University Indianapolis</a></p>
+        <p><a href="https://soic.iupui.edu/" target="_blank">School of Informatics and Computing</a></p>
+        <p id="email"><a href="mailto:cdpotts@iu.edu">cdpotts@iu.edu</a></p>
+        
+        <ul>
+            <li>
+                <a href="index.html" class="selected">Visualizations</a>
+            </li>
+            <li>
+                <a href="docs.html">Documentation</a>
+            </li>
+            <li>
+                <a href="process.html">Process</a>
+            </li>
+            <li>
+                <a href="http://potts.xyz">Home Site</a>
+            </li>             
+        </ul>
+
+    </section>
+    <!-- content section contains the page-specific content at right side of page -->
+    <section class="content" id="aboutSection"> 
+        <h2>Visualizations</h2>
+        <!-- the visualization will go here. 
+             there will also be the list of stars to choose from
+             and selections for different visualization types -->
+        <div class="vis-wrapper">
+        <!-- selectionHolder contains all the options for manipulating the graphs -->
+            <div class="selectionHolder">
+                <!-- graphToggle contains radio buttons for user to 
+                        change which graph is being modified  -->
+                <div class="graphToggle">
+                    <p>Now displaying:</p>
+                    <input type="radio" value="graph1" id="graph1" name="graph" onclick="changeActiveGraph(svg1)" checked="checked">
+                        <label for="graph1">Scatterplot</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">Bar Graph</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">Comparison</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">3D Star Map</label>
+                </div>
+                <!-- selectionTab contains the locality selection list 
+                        and the data selection list -->
+                <div class="selectionTab">
+                    <p>Select a Star</p>
+                    <select id="selectionLocation" size=20> </select>
+                    <button>&nbsp; <strong>+</strong> Submit a Star &nbsp;</button>
+                </div>
+            
+            </div>			
+            <!-- These are the divs that hold the graph svgs -->
+            <div class="graphs">
+                <div id="graphHolder">
+                    <div id="mygraph"></div>
+                    <div id="info"></div>
+                </div>
+            </div>
+        </div>
+             
+
+
+
+    </section>
+</div>
+<footer>
+            <p>Copyright © 2018 Me</p>
+</footer>
+<!-- These are not working at all and need to be debugged
+<script src="src/js/blockchain.js"></script>
+<script src="src/js/visualizations.js"></script> -->
+</body>
+</html>

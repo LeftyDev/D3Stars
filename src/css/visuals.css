@@ -1,0 +1,84 @@
+.vis-wrapper {
+	width:1300px;
+	margin:0 auto;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.selectionHolder {
+	margin: 0 auto;
+	height: 500px;
+	width: 125px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center
+}
+
+.selectionHolder p {
+	font-size: 12px;
+	margin-top: 5px;
+}
+
+.selectionHolder button {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.graphToggle {
+	margin: 0 auto;
+	width: 125px;
+	text-align: left;
+	padding-left: 5px;
+	box-sizing: border-box;
+	border: black 1px solid;
+}
+
+.graphToggle input:last-of-type {
+    margin-bottom: 15px;
+}
+
+.selectionTab {
+	margin: 0 auto;
+	height:375px;
+	width:100%;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center; 
+	box-sizing: border-box;
+	border: black 1px solid;
+}
+
+.graphs { 
+	height:420px;
+	width:100%;
+	display:flex;
+	flex-direction: row;
+}
+
+#graphHolder {
+	margin-right: 15px;
+}
+
+#graphHolder2 {
+	box-sizing: border-box;
+	border-left: black 1px solid;
+}
+
+#graphHolder,
+#graphHolder2 {
+	padding-top: 30px;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+
+.tick text {
+	fill: black;
+	font-size: 11px;
+}

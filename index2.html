@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="src/css/styles.css" rel="stylesheet" type="text/css">
+    <link href="src/css/visuals.css" rel="stylesheet" type="text/css">
+    <link href="src/css/paralax.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.2/papaparse.min.js" charset="utf-8"></script>
+    <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+    <!-- <script data-main="scripts/main" src="src/js/require.js"></script> -->
+    <title>StarChain - Capstone 2018</title>
+
+</head>
+<body onload="drawVisualization()">
+<div class="wrapper">
+    <!-- sidebar contains nav and photo at left side of page -->
+    <section class="sidebar">
+        <img id="profile" alt="Profile photo" src="src/img/sun.png">
+        <h2>StellarChain</h2>
+        
+        <p>A look at our closest neighbors</p>
+        <p>via blockchain-fed visualizations.</p>
+        <p><a href="https://iupui.edu/" target="_blank">Indiana University-Purdue University Indianapolis</a></p>
+        <p><a href="https://soic.iupui.edu/" target="_blank">School of Informatics and Computing</a></p>
+        <p id="email"><a href="mailto:cdpotts@iu.edu">cdpotts@iu.edu</a></p>
+        
+        <ul>
+            <li>
+                <a href="index.html" class="selected">Visualizations</a>
+            </li>
+            <li>
+                <a href="docs.html">Documentation</a>
+            </li>
+            <li>
+                <a href="process.html">Process</a>
+            </li>
+            <li>
+                <a href="http://potts.xyz">Home Site</a>
+            </li>             
+        </ul>
+
+    </section>
+    <!-- content section contains the page-specific content at right side of page -->
+    <section class="content" id="aboutSection"> 
+        <h2>Visualizations</h2>
+        <!-- the visualization will go here. 
+             there will also be the list of stars to choose from
+             and selections for different visualization types -->
+        <div class="vis-wrapper">
+        <!-- selectionHolder contains all the options for manipulating the graphs -->
+            <div class="selectionHolder">
+                <!-- graphToggle contains radio buttons for user to 
+                        change which graph is being modified  -->
+                <div class="graphToggle">
+                    <p>Now displaying:</p>
+                    <input type="radio" value="graph1" id="graph1" name="graph" onclick="changeActiveGraph(svg1)" checked="checked">
+                        <label for="graph1">Scatterplot</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">Bar Graph</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">Comparison</label><br/>
+                    <input type="radio" value="graph2" id="graph2" name="graph" onclick="changeActiveGraph(svg2)">
+                        <label for="graph2">3D Star Map</label>
+                </div>
+                <!-- selectionTab contains the locality selection list 
+                        and the data selection list -->
+                <div class="selectionTab">
+                    <p>Select a Star</p>
+                    <select id="selectionLocation" size=20> </select>
+                    <button>&nbsp; <strong>+</strong> Submit a Star &nbsp;</button>
+                </div>
+            
+            </div>			
+            <!-- These are the divs that hold the graph svgs -->
+            <div class="graphs">
+                <div id="graphHolder">
+                        <div id="mygraph"></div>
+
+                        <div id="info"></div>
+                </div>
+            </div>
+        </div>
+             
+
+
+
+    </section>
+</div>
+<footer>
+            <p>Copyright © 2018 Me</p>
+</footer>
+<script src="src/js/vis1.js"></script>
+<script src="src/node_modules/vis/dist/vis.min.js"></script>
+</body>
+</html>
